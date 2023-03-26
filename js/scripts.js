@@ -3,6 +3,7 @@
 function newItem(){
 
   //1. Adding a new item to the list of items(JQUERY CODE): 
+  
      let li = $('<li></li>');
      let inputValue = $('#input').val();
      li.appendChild(inputValue);
@@ -14,6 +15,7 @@ function newItem(){
      }
   
    //2. Crossing out an item from the list of items(JQUERY CODE):
+
      function crossOut() {
        li.toggleClass("strike");
      }
@@ -21,17 +23,23 @@ function newItem(){
      li.on("dblclick", function crossOut() {
       li.toggleClass("strike");
     });
-   //3(i). Adding the delete button "X": 
-     let crossOutButton = document.createElement("crossOutButton");
-     crossOutButton.appendChild(document.createTextNode("X"));
-     li.appendChild(crossOutButton);
+
+   //3(i). Adding the delete button "X" (JQUERY CODE): 
+
+     let crossOutButton = $('<crossOutButton></crossOutButton>');
+     crossOutButton.append(document.createTextNode('X'));
+     li.append(crossOutButton);
   
-     crossOutButton.addEventListener("click", deleteListItem);
-   //3(ii). Adding CLASS DELETE (DISPLAY: NONE) from the css:
-     function deleteListItem(){
+
+   //3(ii). Adding CLASS DELETE (DISPLAY: NONE) from the css (JQUERY CODE):
+
+       crossOutButton.on("click", deleteListItem);
+       function deleteListItem(){
        li.classList.add("delete")
      }
+
    // 4. Reordering the items: 
+
      $('#list').sortable();
   
   }
